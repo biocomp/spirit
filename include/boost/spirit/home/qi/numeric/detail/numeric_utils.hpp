@@ -136,7 +136,7 @@ namespace boost { namespace spirit { namespace qi { namespace detail
         {
             // Ensure n *= Radix will not overflow
             static T const max = (std::numeric_limits<T>::max)();
-            static T const val = max / Radix;
+            static T const val = (std::numeric_limits<T>::max)() / Radix;
 
             if (n > val)
                 return false;
@@ -168,7 +168,7 @@ namespace boost { namespace spirit { namespace qi { namespace detail
         {
             // Ensure n *= Radix will not underflow
             static T const min = (std::numeric_limits<T>::min)();
-            static T const val = (min + 1) / T(Radix);
+            static T const val = ((std::numeric_limits<T>::min)() + 1) / T(Radix);
             if (n < val)
                 return false;
 
